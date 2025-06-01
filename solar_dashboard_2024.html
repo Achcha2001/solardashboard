@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Sri Lanka Solar Power Dashboard - 2024</title>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css"/>
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body class="bg-light">
+  <div class="container py-5">
+    <h2 class="mb-4 text-center">🌞 Sri Lanka Solar Power Dashboard (2024)</h2>
+
+    <div class="row mb-4">
+      <div class="col-md-6">
+        <div class="card text-white bg-primary mb-3 shadow">
+          <div class="card-body">
+            <h5 class="card-title">Total Capacity Target (2025)</h5>
+            <h3 class="card-text">1,000 MW</h3>
+            <p>National Goal by End of 2025</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-md-6">
+        <div class="card text-white bg-success mb-3 shadow">
+          <div class="card-body">
+            <h5 class="card-title">Installed Rooftop Solar Capacity</h5>
+            <h3 class="card-text">750 MW</h3>
+            <p>As of February 2024</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="card shadow">
+      <div class="card-body">
+        <h5 class="card-title">Company-wise Solar Capacity Distribution</h5>
+        <canvas id="solarChart" height="100"></canvas>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    const ctx = document.getElementById('solarChart').getContext('2d');
+    const solarChart = new Chart(ctx, {
+      type: 'bar',
+      data: {
+        labels: ['Hayleys Solar', 'JLanka Technologies', 'WindForce PLC', 'Vortex Energy', 'Abans Solar'],
+        datasets: [{
+          label: 'Installed Capacity (MW)',
+          data: [350, 120, 100, 80, 50], // Example values; adjust as per actual data
+          backgroundColor: [
+            '#1f77b4', '#ff7f0e', '#2ca02c',
+            '#d62728', '#9467bd'
+          ],
+          borderRadius: 8,
+        }]
+      },
+      options: {
+        responsive: true,
+        plugins: {
+          legend: {
+            position: 'bottom',
+          },
+        },
+        scales: {
+          y: {
+            beginAtZero: true,
+            title: {
+              display: true,
+              text: 'Capacity (MW)'
+            }
+          }
+        }
+      }
+    });
+  </script>
+</body>
+</html>
